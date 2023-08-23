@@ -51,7 +51,7 @@ class InputService : AccessibilityService() {
     private var isWheelActionsPolling = false
     private var isWaitingLongPress = false
 
-    @RequiresApi(Build.VERSION_CODES.N)
+    @RequiresApi(Build.VERSION_CODES.M)
     fun onMouseInput(mask: Int, _x: Int, _y: Int) {
         val x = max(0, _x)
         val y = max(0, _y)
@@ -167,7 +167,7 @@ class InputService : AccessibilityService() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun consumeWheelActions() {
         if (isWheelActionsPolling) {
             return
@@ -199,7 +199,7 @@ class InputService : AccessibilityService() {
         touchPath.lineTo(x.toFloat(), y.toFloat())
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun endGesture(x: Int, y: Int) {
         try {
             touchPath.lineTo(x.toFloat(), y.toFloat())

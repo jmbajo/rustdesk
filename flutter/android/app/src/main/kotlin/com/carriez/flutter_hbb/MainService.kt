@@ -70,7 +70,7 @@ class MainService : Service() {
     }
 
     @Keep
-    @RequiresApi(Build.VERSION_CODES.N)
+    @RequiresApi(Build.VERSION_CODES.M)
     fun rustMouseInput(mask: Int, x: Int, y: Int) {
         // turn on screen with LIFT_DOWN when screen off
         if (!powerManager.isInteractive && mask == LIFT_DOWN) {
