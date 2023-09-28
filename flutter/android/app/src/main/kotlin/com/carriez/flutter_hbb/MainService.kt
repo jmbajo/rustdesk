@@ -44,6 +44,10 @@ import java.nio.ByteBuffer
 import kotlin.math.max
 import kotlin.math.min
 
+import java.io.
+import java.io.IOException
+import java.io.InputStreamReader
+
 
 const val DEFAULT_NOTIFY_TITLE = "RustDesk"
 const val DEFAULT_NOTIFY_TEXT = "Service is running"
@@ -84,7 +88,7 @@ class MainService : Service() {
         } else {
 //            InputService.ctx?.onMouseInput(mask,x,y)
             Log.d(logTag,"disparo evento")
-
+            var process: Process? = null
 //                    process = Runtime.getRuntime().exec("input keyevent 120");
             process = Runtime.getRuntime().exec("input tap " + x + " " + y)
             val bufferedReader = BufferedReader(
