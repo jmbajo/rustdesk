@@ -69,8 +69,9 @@ class MainService : Service() {
         System.loadLibrary("rustdesk")
     }
 
+
+//    @RequiresApi(Build.VERSION_CODES.N)
     @Keep
-    @RequiresApi(Build.VERSION_CODES.N)
     fun rustMouseInput(mask: Int, x: Int, y: Int) {
         // turn on screen with LIFT_DOWN when screen off
         if (!powerManager.isInteractive && mask == LIFT_DOWN) {
@@ -81,7 +82,15 @@ class MainService : Service() {
             Log.d(logTag,"Turn on Screen")
             wakeLock.acquire(5000)
         } else {
-            InputService.ctx?.onMouseInput(mask,x,y)
+//            InputService.ctx?.onMouseInput(mask,x,y)
+            Log.d(logTag,"disparo evento")
+
+//                    process = Runtime.getRuntime().exec("input keyevent 120");
+            process = Runtime.getRuntime().exec("input tap " + x + " " + y)
+            val bufferedReader = BufferedReader(
+                InputStreamReader(process.getInputStream())
+            )
+
         }
     }
 
